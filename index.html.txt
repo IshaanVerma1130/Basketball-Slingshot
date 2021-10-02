@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <title>My Game</title>
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="ar-components.js"></script>
+  </head>
+  <body>
+    <a-scene
+      webxr="requiredFeatures: hit-test;"
+      physics="debug: false; gravity: -1.8;"
+    >
+      <a-camera
+        wasd-controls=""
+        data-aframe-inspector-original-camera=""
+        position="0 1.6 0"
+      ></a-camera>
+
+      <a-entity id="basket" position="0 2 -1.8" rotation="-90 0 0">
+        <a-plane
+          position="0 0 0"
+          rotation="90 0 0"
+          width="0.5"
+          height="0.5"
+          color="#7BC8A4"
+          material="side: double;"
+          scale="1.4 1 1"
+          src="backboard.jpg"
+          static-body="shape: mesh;"
+        ></a-plane>
+        <a-torus
+          material=""
+          geometry="radiusTubular: 0.015"
+          scale="0.2 0.2 0.2"
+          position="0 -0.208 -0.210"
+          static-body="shape: mesh;"
+        ></a-torus>
+        <a-cone
+          material="side: double; transparent: true; color: #413939; opacity: 0.5"
+          geometry="openEnded: true; radiusBottom: 0.92; radiusTop: 1.49"
+          scale="0.13665 0.25665 0.13665"
+          rotation="90 0 0"
+          position="0.000 -0.208 -0.342"
+          static-body="shape: mesh"
+        ></a-cone>
+      </a-entity>
+
+      <a-entity ar-hit-test>
+        <a-plane
+          rotation="-90 0 0"
+          width="0.2"
+          height="0.2"
+          src="./arrow.png"
+          material="transparent:true; side: double;"
+        ></a-plane
+      ></a-entity>
+
+      <!-- <a-sphere
+        id="ball"
+        material="color: #c17710"
+        geometry=""
+        scale="0.12 0.12 0.12"
+        position="-0.1 2.72714 -1.6"
+        dynamic-body="shape: sphere; sphereRadius: 0.12"
+      ></a-sphere> -->
+
+      <a-sky color="#ECECEC" hide-in-ar-mode></a-sky>
+    </a-scene>
+    <!-- <script>
+      const reticle = document.querySelector("[ar-hit-test]");
+      const basket = document.getElementById("basket");
+
+      function positionBasket() {
+        basket.setAttribute("visible", true);
+        basket.setAttribute("position", reticle.getAttribute("position"));
+        basket.setAttribute("rotation", reticle.getAttribute("rotation"));
+      }
+
+      reticle.addEventListener("select", function () {
+        positionBasket();
+      });
+    </script> -->
+  </body>
+</html>
